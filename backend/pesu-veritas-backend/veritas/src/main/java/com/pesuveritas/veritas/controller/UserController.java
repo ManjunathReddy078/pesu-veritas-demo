@@ -12,10 +12,12 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/register")
-    public String register(@RequestParam String name,
-                           @RequestParam String email,
-                           @RequestParam String role) {
-        // Panel: This maps /api/register POST requests to backend registration logic.
-        return userService.registerUser(name, email, role);
-    }
+public String register(@RequestParam String name,
+                       @RequestParam String email,
+                       @RequestParam String role,
+                       @RequestParam(required = false) String section,
+                       @RequestParam(required = false) String facultyId) {
+    return userService.registerUser(name, email, role, section, facultyId);
+}
+
 }

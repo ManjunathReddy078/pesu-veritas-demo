@@ -4,7 +4,8 @@ import jakarta.persistence.*;
 import java.util.UUID;
 
 @Entity
-public class User {
+@Table(name = "user7")
+public class AppUser {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -13,15 +14,20 @@ public class User {
     private String email;
     private String role; // student or faculty
     private String uuid; // unique identifier
+    private String section;    // For students only
+    private String facultyId; // For faculty only
 
-    public User() {} // default constructor (required)
+    public AppUser() {} // default constructor (required)
 
-    public User(String name, String email, String role, String uuid) {
+    public AppUser(String name, String email, String role, String uuid, String section, String facultyId) {
     this.name = name;
     this.email = email;
     this.role = role;
     this.uuid = uuid;
-    }
+    this.section = section;
+    this.facultyId = facultyId;
+}
+
 
 
     // Getters and setters
@@ -39,5 +45,11 @@ public class User {
 
     public String getUuid() { return uuid; }
     public void setUuid(String uuid) { this.uuid = uuid; }
+
+    public String getSection() { return section; }
+    public void setSection(String section) { this.section = section; }
+    
+    public String getFacultyId() { return facultyId; }
+    public void setFacultyId(String facultyId) { this.facultyId = facultyId; }
 }
 
